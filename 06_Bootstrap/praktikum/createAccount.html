@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .invalid-feedback {
+      display: none;
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+      <h2 class="text-2xl font-bold text-center mb-4">Create Account</h2>
+      <p class="text-center mb-6 text-gray-600">Below is an example form built entirely with Tailwind CSS. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+
+      <form id="createAccountForm" class="space-y-4">
+        <h4 class="text-xl font-semibold mb-4">Detail Form</h4>
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
+            <input type="text" class="mt-1 block w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="firstName" placeholder="First name" required>
+          </div>
+          <div class="flex-1">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Last name</label>
+            <input type="text" class="mt-1 block w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="lastName" placeholder="Last name" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500"> @ </span>
+            <input type="text" class="mt-1 block w-full pl-10 border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="username" placeholder="Username" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" class="mt-1 block w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" placeholder="you@example.com" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Gender</label>
+          <div class="flex gap-4 mt-1">
+            <div class="flex items-center">
+              <input class="form-radio" type="radio" name="gender" id="genderMale" value="male" required>
+              <label for="genderMale" class="ml-2 text-gray-700">Male</label>
+            </div>
+            <div class="flex items-center">
+              <input class="form-radio" type="radio" name="gender" id="genderFemale" value="female" required>
+              <label for="genderFemale" class="ml-2 text-gray-700">Female</label>
+            </div>
+            <div class="flex items-center">
+              <input class="form-radio" type="radio" name="gender" id="genderOther" value="other" required>
+              <label for="genderOther" class="ml-2 text-gray-700">Others</label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+          <input type="text" class="mt-1 block w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="address" placeholder="1234 Main St" required>
+        </div>
+
+        <div>
+          <label for="address2" class="block text-sm font-medium text-gray-700">Address 2 (Optional)</label>
+          <input type="text" class="mt-1 block w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" id="address2" placeholder="Apartment or suite">
+        </div>
+
+        <div>
+          <label for="nationality" class="block text-sm font-medium text-gray-700">Nationality</label>
+          <select id="nationality" class="mt-1 block w-full border rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="US">United States</option>
+            <option value="IN">India</option>
+            <option value="UK">United Kingdom</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Language Spoken:</label>
+          <div class="flex flex-col gap-2 mt-1">
+            <div class="flex items-center">
+              <input class="form-checkbox" type="checkbox" id="languageBahasa" name="language" value="bahasa">
+              <label for="languageBahasa" class="ml-2 text-gray-700">Bahasa</label>
+            </div>
+            <div class="flex items-center">
+              <input class="form-checkbox" type="checkbox" id="languageEnglish" name="language" value="english">
+              <label for="languageEnglish" class="ml-2 text-gray-700">English</label>
+            </div>
+            <div class="flex items-center">
+              <input class="form-checkbox" type="checkbox" id="languageOther" name="language" value="other">
+              <label for="languageOther" class="ml-2 text-gray-700">Other</label>
+            </div>
+          </div>
+          <div id="checkboxError" class="invalid-feedback">Please select at least one language.</div>
+        </div>
+
+        <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">Create Account</button>
+      </form>
+
+      <script>
+        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+          const checkboxes = document.querySelectorAll('input[name="language"]');
+          const error = document.getElementById('checkboxError');
+          const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+      
+          if (!isChecked) {
+            error.style.display = 'block';
+            event.preventDefault(); // Cegah pengiriman form jika validasi gagal
+          } else {
+            error.style.display = 'none';
+            // Setelah validasi berhasil, arahkan ke landingPage.html
+            // Form tetap disubmit, dan redirect terjadi
+            setTimeout(() => {
+              window.location.href = 'landingPage.html';
+            }, 0);
+          }
+        });
+      </script>
+    </div>
+  </div>
+</body>
+</html>
