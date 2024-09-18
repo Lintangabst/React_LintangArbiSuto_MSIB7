@@ -97,19 +97,18 @@
 
 
 <script>
-  // Function to show the modal when form is submitted
   function showModal() {
     document.getElementById("productModal").classList.remove("hidden");
     document.getElementById("productModal").classList.add("flex");
   }
 
-  // Function to close the modal when "Close" button is clicked and reset the form
+
   function closeModal() {
-    // Hide the modal
+
     document.getElementById("productModal").classList.remove("flex");
     document.getElementById("productModal").classList.add("hidden");
     
-    // Reset the form
+
     document.getElementById("createProductForm").reset();
   }
 

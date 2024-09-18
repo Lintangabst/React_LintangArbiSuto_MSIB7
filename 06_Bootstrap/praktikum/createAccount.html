@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -124,11 +123,9 @@
       
           if (!isChecked) {
             error.style.display = 'block';
-            event.preventDefault(); // Cegah pengiriman form jika validasi gagal
+            event.preventDefault(); 
           } else {
             error.style.display = 'none';
-            // Setelah validasi berhasil, arahkan ke landingPage.html
-            // Form tetap disubmit, dan redirect terjadi
             setTimeout(() => {
               window.location.href = 'landingPage.html';
             }, 0);
