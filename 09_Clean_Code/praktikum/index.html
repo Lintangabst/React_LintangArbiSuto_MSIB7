@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script>
+        let products = []; // Array untuk menyimpan produk
+
+        /**
+         * Menambahkan produk baru ke dalam daftar produk
+         */
+        function addProduct() {
+            const productName = document.getElementById('productName').value; // Mendapatkan nama produk
+            const productPrice = document.getElementById('productPrice').value; // Mendapatkan harga produk
+
+            // Validasi input
+            if (productName && productPrice) {
+                products.push({ name: productName, price: productPrice }); // Menambahkan produk ke array
+                renderTable(); // Mengrender tabel produk
+                clearInputFields(); // Menghapus input setelah menambahkan produk
+            } else {
+                alert('Please fill in all fields'); // Pesan jika ada input yang kosong
+            }
+        }
+
+        /**
+         * Mengosongkan input field setelah menambah produk
+         */
+        function clearInputFields() {
+            document.getElementById('productName').value = '';
+            document.getElementById('productPrice').value = '';
+        }
+
+        /**
+         * Merender tabel produk
+         */
+        function renderTable() {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; // Mengosongkan tabel sebelum merender ulang
+            products.forEach((product, index) => {
+                const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                </tr>`;
+                tableBody.innerHTML += row; // Menambahkan baris ke tabel
+            });
+        }
+
+        /**
+         * Menghapus produk terakhir dari daftar
+         */
+        function deleteLastProduct() {
+            const confirmation = confirm("Are you sure you want to delete the last product?");
+            if (confirmation) {
+                products.pop(); // Menghapus produk terakhir
+                renderTable(); // Mengrender ulang tabel
+            }
+        }
+
+        /**
+         * Mencari produk berdasarkan nama
+         */
+        function searchProduct() {
+            const productName = prompt("Enter product name to search:"); // Meminta input nama produk
+            const foundProduct = products.find(product => product.name === productName); // Mencari produk
+            if (foundProduct) {
+                alert(`Product Name: ${foundProduct.name}\nPrice: ${foundProduct.price}`); // Menampilkan informasi produk
+            } else {
+                alert('Product not found'); // Pesan jika produk tidak ditemukan
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 p-8">
+    <h1 class="text-2xl mb-4">Product List</h1>
+    <div class="mb-4">
+        <input type="text" id="productName" placeholder="Product Name" class="border p-2 mr-2">
+        <input type="number" id="productPrice" placeholder="Product Price" class="border p-2 mr-2">
+        <button onclick="addProduct()" class="bg-blue-500 text-white p-2">Add Product</button>
+        <button onclick="deleteLastProduct()" class="bg-red-500 text-white p-2 ml-2">Delete Last Product</button>
+        <button onclick="searchProduct()" class="bg-green-500 text-white p-2 ml-2">Search Product</button>
+    </div>
+    <table class="table-auto w-full bg-white shadow-lg">
+        <thead>
+            <tr>
+                <th class="border px-4 py-2">#</th>
+                <th class="border px-4 py-2">Product Name</th>
+                <th class="border px-4 py-2">Price</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Daftar produk akan ditampilkan di sini -->
+        </tbody>
+    </table>
+</body>
+</html>
