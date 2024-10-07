@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Product</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<div class="container mx-auto mt-10 px-4">
+  <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Create Product</h1>
+  <p class="text-center mb-8 text-gray-600">Fill out the form below to create a new product.</p>
+
+  <form id="createProductForm" class="bg-white p-8 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6" onsubmit="event.preventDefault(); showModal();">
+    
+    <!-- Product Name -->
+    <div class="mb-6 col-span-1">
+      <label for="productName" class="block text-gray-700 font-medium mb-2">Product Name</label>
+      <input type="text" id="productName" class="form-input mt-1 block w-full border border-1 border-gray-500 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" minlength="6" maxlength="50" required>
+      <div class="error-message invalid-feedback" id="productNameError">Product name must be between 6 and 50 characters.</div>
+    </div>
+
+    <!-- Product Category -->
+    <div class="mb-6 col-span-1">
+      <label for="productCategory" class="block text-gray-700 font-medium mb-2">Product Category</label>
+      <select id="productCategory" class="form-select mt-1 block w-full border border-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+        <option selected disabled value="">Choose...</option>
+        <option value="category1">Category 1</option>
+        <option value="category2">Category 2</option>
+        <option value="category3">Category 3</option>
+      </select>
+    </div>
+
+<!-- Image of Product -->
+<div class="mb-6 col-span-1">
+  <label for="productImage" class="block text-gray-700 font-medium mb-2">Image of Product</label>
+  <div class="relative w-full">
+    <input type="file" id="productImage" class="absolute top-0 left-0 opacity-0 w-full h-full z-50 cursor-pointer" required>
+    <div class="flex">
+      <label for="productImage" class="cursor-pointer px-4 py-2 bg-blue-500 text-white font-semibold rounded-l-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        Choose File
+      </label>
+      <span id="fileName" class="bg-white border border-gray-300 px-4 py-2 text-gray-700 rounded-r-md flex-grow">No file chosen</span>
+    </div>
+  </div>
+</div>
+
+    <!-- Product Freshness -->
+    <div class="mb-6 col-span-1">
+      <label class="block text-gray-700 font-medium mb-2">Product Freshness</label>
+      <div class="flex items-center mb-2">
+        <input type="radio" name="freshness" id="brandNew" value="brand-new" class="form-radio text-blue-500" required>
+        <label for="brandNew" class="ml-2 text-gray-700">Brand New</label>
+      </div>
+      <div class="flex items-center mb-2">
+        <input type="radio" name="freshness" id="secondHand" value="second-hand" class="form-radio text-blue-500" required>
+        <label for="secondHand" class="ml-2 text-gray-700">Second Hand</label>
+      </div>
+      <div class="flex items-center">
+        <input type="radio" name="freshness" id="refurbished" value="refurbished" class="form-radio text-blue-500" required>
+        <label for="refurbished" class="ml-2 text-gray-700">Refurbished</label>
+      </div>
+    </div>
+
+    <!-- Additional Description -->
+    <div class="mb-6 col-span-2">
+      <label for="additionalDescription" class="block text-gray-700 font-medium mb-2">Additional Description</label>
+      <textarea id="additionalDescription" rows="4" class="form-textarea mt-1 block w-full border border-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></textarea>
+    </div>
+
+    <!-- Product Price -->
+    <div class="mb-6 col-span-1">
+      <label for="productPrice" class="block text-gray-700 font-medium mb-2">Product Price</label>
+      <div class="flex items-center border border-gray-300 rounded-md shadow-sm">
+        <span class="inline-flex items-center px-3 text-gray-500 bg-gray-200 border-r border-gray-300 rounded-l-md">$</span>
+        <input type="number" id="productPrice" value="1" min="1" class="form-input flex-1 block border-1 rounded-r-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="col-span-2">
+      <button type="submit" class="w-full py-3 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Submit</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg w-11/12 max-w-lg text-center">
+    <h2 class="text-2xl font-semibold mb-4">Product Submitted</h2>
+    <img src="img/success.png" alt="Success Image" class="mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
+    <p>Your product has been successfully submitted!</p>
+    <button class="mt-6 py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+
+<script>
+  function showModal() {
+    document.getElementById("productModal").classList.remove("hidden");
+    document.getElementById("productModal").classList.add("flex");
+  }
+
+
+  function closeModal() {
+
+    document.getElementById("productModal").classList.remove("flex");
+    document.getElementById("productModal").classList.add("hidden");
+    
+
+    document.getElementById("createProductForm").reset();
+  }
+
+  // Ensure the modal is hidden on page load
+  document.addEventListener("DOMContentLoaded", function() {
+    closeModal(); // Ensure modal is hidden when page loads
+  });
+
+  document.getElementById('productImage').addEventListener('change', function() {
+    var fileInput = this;
+    var fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file chosen';
+    document.getElementById('fileName').textContent = fileName;
+  });
+</script>
+
+</body>
+</html>
