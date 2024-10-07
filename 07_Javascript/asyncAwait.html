@@ -1,0 +1,20 @@
+<div id="quote"></div>
+<button onclick="getQuote()">Get Random Quote</button>
+
+<script>
+    const mockAPI = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve([
+                'Quote 1: Life is what happens when you’re busy making other plans.',
+                'Quote 2: The only limit to our realization of tomorrow is our doubts of today.',
+                'Quote 3: The purpose of our lives is to be happy.'
+            ]);
+        }, 2000);
+    });
+
+    async function getQuote() {
+        const quotes = await mockAPI;
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quote').innerText = quotes[randomIndex];
+    }
+</script>
