@@ -1,4 +1,3 @@
-// src/components/CreateProduct.jsx
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addProduct, editProduct } from '../actions';
@@ -11,7 +10,6 @@ const CreateProduct = ({ addProduct, editProduct, existingProduct }) => {
   const [image, setImage] = useState("");
   const [additionalDescription, setAdditionalDescription] = useState("");
 
-  // Effect to populate fields if editing an existing product
   useEffect(() => {
     if (existingProduct) {
       setProductName(existingProduct.productName);
@@ -41,7 +39,6 @@ const CreateProduct = ({ addProduct, editProduct, existingProduct }) => {
       addProduct(newProduct);
     }
 
-    // Reset form fields after submission
     resetForm();
   };
 

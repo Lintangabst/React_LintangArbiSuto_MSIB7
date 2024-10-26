@@ -1,4 +1,3 @@
-// src/components/ListProduct.jsx
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteProduct } from '../actions';
@@ -8,17 +7,15 @@ const ListProduct = ({ products, error, deleteProduct }) => {
   const [editingProduct, setEditingProduct] = React.useState(null);
 
   const handleCancelEdit = () => {
-    setEditingProduct(null); // Reset the editing state
+    setEditingProduct(null);
   };
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      {/* Add Product Form */}
       <div className="mb-6">
         <CreateProduct existingProduct={editingProduct} />
       </div>
 
-      {/* Product List Table */}
       <h2 className="text-2xl font-bold mb-4">Product List</h2>
       {products.length > 0 ? (
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">

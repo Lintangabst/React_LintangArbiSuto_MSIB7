@@ -1,4 +1,3 @@
-// src/reducers.js
 const initialState = {
     products: [
       {
@@ -14,13 +13,11 @@ const initialState = {
     error: null,
   };
   
-  // Action types
   export const ADD_PRODUCT_SUCCESS = 'ADD_PRODUCT_SUCCESS';
   export const ADD_PRODUCT_ERROR = 'ADD_PRODUCT_ERROR';
   export const EDIT_PRODUCT = 'EDIT_PRODUCT';
   export const DELETE_PRODUCT = 'DELETE_PRODUCT';
   
-  // Reducer
   const reducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_PRODUCT_SUCCESS:

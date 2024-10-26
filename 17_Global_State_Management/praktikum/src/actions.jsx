@@ -1,7 +1,5 @@
-// src/actions.js
 import { ADD_PRODUCT_SUCCESS, ADD_PRODUCT_ERROR, EDIT_PRODUCT, DELETE_PRODUCT } from './reducers';
 
-// Action creators
 export const addProductSuccess = (product) => ({
   type: ADD_PRODUCT_SUCCESS,
   payload: product,
@@ -22,7 +20,6 @@ export const deleteProduct = (id) => ({
   payload: id,
 });
 
-// Thunk action for adding product with validation
 export const addProduct = (product) => {
   return (dispatch, getState) => {
     const { products } = getState();
