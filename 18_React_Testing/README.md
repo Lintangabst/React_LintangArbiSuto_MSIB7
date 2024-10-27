@@ -1,11 +1,20 @@
-Praktikum ini mengelola daftar produk melalui dua komponen utama, **ListProduct.jsx** dan **CreateProduct.jsx**, yang terintegrasi dengan **Redux** untuk manajemen state global.
+enjelasan Singkat tentang Pengujian Komponen CreateProduct
+Tujuan Pengujian:
 
-1. **ListProduct.jsx**: Menampilkan daftar produk dalam tabel. Setiap produk memiliki tombol "Edit" untuk mengubah informasi dan "Delete" untuk menghapus produk. Jika tidak ada produk, akan ditampilkan pesan bahwa daftar kosong.
+Memastikan fungsi komponen CreateProduct, terutama dalam validasi input pengguna.
+Fokus Pengujian:
 
-2. **CreateProduct.jsx**: Berisi formulir untuk menambah atau mengedit produk. Formulir mencakup field seperti nama, kategori, kesegaran, harga, URL gambar, dan deskripsi. Terdapat tombol "Add Product" atau "Edit Product", serta tombol "Cancel Edit" untuk membatalkan pengeditan.
+Validasi kolom "Product Name" untuk memastikan tidak menerima karakter tidak valid (misalnya, '@InvalidName') dan menampilkan pesan kesalahan yang sesuai.
+Asersi yang Dilakukan:
 
-### Fungsi dan Interaksi Pengguna
+Memeriksa keberadaan pesan kesalahan saat input tidak valid.
+Mengharapkan nilai input direset menjadi kosong setelah validasi gagal.
+Masalah Ditemui:
 
-Pengguna dapat dengan mudah menambah atau mengedit produk dari tampilan tabel. Pengisian formulir dirancang untuk memberikan pengalaman pengguna yang lancar, memungkinkan fokus pada manajemen produk.
-### Integrasi Redux
-Pengelolaan state dilakukan dengan **Redux**, yang menyimpan daftar produk dalam `initialState`. Action creators seperti `addProduct` dan `editProduct` digunakan untuk memperbarui daftar, sementara reducers memastikan state tetap konsisten. Dengan Redux, aplikasi ini memberikan cara terstruktur untuk mengelola produk secara efisien.
+Nilai input tidak ter-reset setelah pengujian, menyebabkan asersi expect(input.value).toBe(''); gagal.
+Konsep Dasar React Testing
+React Testing Library digunakan untuk menguji komponen dengan fokus pada perilaku pengguna.
+Asersi memastikan komponen berfungsi seperti yang diharapkan.
+Simulasi interaksi pengguna dilakukan dengan fireEvent.
+Kesimpulan
+Pengujian ini penting untuk memastikan aplikasi berfungsi baik. Meskipun ada masalah dengan reset nilai input, ini memberikan dasar untuk validasi dan pengelolaan kesalahan dalam komponen CreateProduct. Perbaikan pada logika pengaturan nilai input diperlukan untuk meningkatkan fungsi komponen.
