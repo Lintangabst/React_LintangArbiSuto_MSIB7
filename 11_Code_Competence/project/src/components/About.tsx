@@ -17,7 +17,7 @@ const AboutUs: React.FC = () => {
 
         <div className="w-full md:w-1/2 px-4">
           <img 
-            src="src/assets/img/about.png" 
+            src="./img/about.png" 
             alt="About Us" 
             className="w-full h-auto object-cover" 
           />
