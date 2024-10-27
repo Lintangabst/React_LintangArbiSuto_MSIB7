@@ -3,30 +3,37 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+// Import images
+import project1 from 'src/assets/img/project1.png';
+import project2 from 'src/assets/img/project2.png';
+import project3 from 'src/assets/img/project3.png';
+import project4 from 'src/assets/img/project4.png';
+import project5 from 'src/assets/img/project5.png';
+
 const portfolioItems = [
   {
     id: 1,
-    image: 'src/assets/img/project1.png',
+    image: project1,
     description: 'MOOD: A math operations learning application for elementary school students in grades 1 to 3.',
   },
   {
     id: 2,
-    image: 'src/assets/img/project2.png',
+    image: project2,
     description: 'Straweyi: A portfolio website for a pearl bag brand.',
   },
   {
     id: 3,
-    image: 'src/assets/img/project3.png',
+    image: project3,
     description: 'BengkelIT: A service application for electronic devices at Paramadina University.',
   },
   {
     id: 4,
-    image: 'src/assets/img/project4.png',
+    image: project4,
     description: 'Birthday Greeting Website.',
   },
   {
     id: 5,
-    image: 'src/assets/img/project5.png',
+    image: project5,
     description: 'AMANTIX: A ticket sales application for events at Paramadina University.',
   },
 ];
