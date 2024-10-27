@@ -6,27 +6,27 @@ import 'slick-carousel/slick/slick-theme.css';
 const portfolioItems = [
   {
     id: 1,
-    image: './img/project1.png',
+    image: 'src/assets/img/project1.png',
     description: 'MOOD: A math operations learning application for elementary school students in grades 1 to 3.',
   },
   {
     id: 2,
-    image: './img/project2.png',
+    image: 'src/assets/img/project2.png',
     description: 'Straweyi: A portfolio website for a pearl bag brand.',
   },
   {
     id: 3,
-    image: './img/project3.png',
+    image: 'src/assets/img/project3.png',
     description: 'BengkelIT: A service application for electronic devices at Paramadina University.',
   },
   {
     id: 4,
-    image: './img/project4.png',
+    image: 'src/assets/img/project4.png',
     description: 'Birthday Greeting Website.',
   },
   {
     id: 5,
-    image: './img/project5.png',
+    image: 'src/assets/img/project5.png',
     description: 'AMANTIX: A ticket sales application for events at Paramadina University.',
   },
 ];
