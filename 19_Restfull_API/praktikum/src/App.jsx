@@ -1,10 +1,10 @@
 // src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './components/Login'; // Your Login component
-import CreateProduct from './components/CreateProduct'; // Your CreateProduct component
-import ListProduct from './components/ListProduct'; // Your ListProduct component
-import PrivateRoute from './components/PrivateRoute'; // The PrivateRoute component
+import Login from './components/Login';
+import CreateProduct from './components/CreateProduct';
+import ListProduct from './components/ListProduct';
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   return (

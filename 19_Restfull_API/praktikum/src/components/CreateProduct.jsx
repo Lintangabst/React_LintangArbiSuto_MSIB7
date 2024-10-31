@@ -1,4 +1,3 @@
-// src/components/CreateProduct.jsx
 import React, { useState } from "react";
 import axios from "axios";
 

@@ -1,7 +1,6 @@
-// src/components/ListProduct.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const ListProduct = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +13,7 @@ const ListProduct = () => {
   });
 
   const apiUrl = "https://672343212108960b9cc75e87.mockapi.io/products";
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -41,11 +40,9 @@ const ListProduct = () => {
 
   const handleEdit = (product) => {
     if (editProduct === product.id) {
-      // If already in edit mode, cancel edit
       setEditProduct(null);
       setEditForm({ name: "", price: "", category: "", description: "" });
     } else {
-      // Start edit mode
       setEditProduct(product.id);
       setEditForm({
         name: product.name,
@@ -81,7 +78,7 @@ const ListProduct = () => {
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-center mb-6">List Product</h1>
       <button
-        onClick={() => navigate('/create-product')} // Navigate to CreateProduct page
+        onClick={() => navigate('/create-product')}
         className="mb-4 bg-green-500 text-white px-4 py-2 rounded"
       >
         Add New Product

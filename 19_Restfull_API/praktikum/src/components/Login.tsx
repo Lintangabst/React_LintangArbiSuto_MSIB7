@@ -5,7 +5,7 @@ const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [isSuccess, setIsSuccess] = useState<boolean>(false); // State for success pop-up
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
@@ -13,22 +13,21 @@ const Login: React.FC = () => {
 
     const dummyUser = { username: 'admin', password: 'password123' };
 
-    // Check local storage for existing user
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
     if (user && user.username === username && user.password === password) {
-      localStorage.setItem('isLoggedIn', 'true'); // Convert boolean to string
-      setIsSuccess(true); // Show success pop-up
+      localStorage.setItem('isLoggedIn', 'true');
+      setIsSuccess(true);
       setTimeout(() => {
-        navigate('/list-product'); // Redirect after the pop-up
-      }, 2000); // Wait 2 seconds before redirecting
+        navigate('/list-product');
+      }, 2000);
     } else if (username === dummyUser.username && password === dummyUser.password) {
       localStorage.setItem('user', JSON.stringify(dummyUser));
-      localStorage.setItem('isLoggedIn', 'true'); // Convert boolean to string
-      setIsSuccess(true); // Show success pop-up
+      localStorage.setItem('isLoggedIn', 'true');
+      setIsSuccess(true);
       setTimeout(() => {
-        navigate('/list-product'); // Redirect after the pop-up
-      }, 2000); // Wait 2 seconds before redirecting
+        navigate('/list-product'); 
+      }, 2000); 
     } else {
       setErrorMessage('Invalid username or password');
     }
@@ -64,7 +63,6 @@ const Login: React.FC = () => {
         {errorMessage && <p className="mt-2 text-red-500">{errorMessage}</p>}
       </form>
 
-      {/* Success Pop-Up */}
       {isSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-6 rounded shadow-lg">
