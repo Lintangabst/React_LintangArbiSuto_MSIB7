@@ -4,11 +4,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 // Import images
-import project1 from 'src/assets/img/project1.png';
-import project2 from 'src/assets/img/project2.png';
-import project3 from 'src/assets/img/project3.png';
-import project4 from 'src/assets/img/project4.png';
-import project5 from 'src/assets/img/project5.png';
+import project1 from '../assets/img/project1.png';
+import project2 from '../assets/img/project2.png';
+import project3 from '../assets/img/project3.png';
+import project4 from '../assets/img/project4.png';
+import project5 from '../assets/img/project5.png';
 
 const portfolioItems = [
   {
