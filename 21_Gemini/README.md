@@ -1,0 +1,9 @@
+Kode ini adalah implementasi **Chatbot**, sebuah aplikasi React yang menggunakan **Google Generative AI API** untuk memberikan respons berbasis topik kesehatan mental. Aplikasi ini memanfaatkan library `@google/generative-ai` untuk mengakses model generatif "gemini-1.5-flash-latest". Konfigurasi model mencakup parameter seperti **temperature**, **topP**, dan batas panjang respons. Fitur **safety settings** diterapkan untuk memblokir konten eksplisit atau berbahaya.
+
+Komponen utama, **Chatbot**, terdiri dari beberapa state React seperti `inputValue` untuk input pengguna, `history` untuk melacak riwayat percakapan, dan `aiResponse` untuk menyimpan respons AI. Ketika pengguna mengirimkan pesan melalui fungsi `handleSubmit`, chatbot membuat sesi percakapan baru menggunakan Google Generative AI, mengirimkan prompt berbasis topik kesehatan mental, dan menampilkan respons yang dihasilkan di antarmuka pengguna.
+
+Efek ketikan animasi diterapkan pada respons AI menggunakan `useEffect`, menampilkan karakter satu per satu. Pengguna juga dapat menghentikan proses pengetikan animasi dengan tombol **Stop**. Selain itu, aplikasi menyediakan **quick prompts**, yaitu tombol dengan saran input cepat untuk memudahkan pengguna.
+
+Riwayat percakapan ditampilkan secara interaktif, di mana pesan pengguna dan respons AI dirender dalam elemen visual yang berbeda. Input pesan dilakukan melalui bidang teks dengan kemampuan mendeteksi tombol **Enter** untuk pengiriman. Seluruh aplikasi menggunakan **Tailwind CSS** untuk gaya dan tata letak.
+
+Dengan fitur ini, Calm.ai memberikan pengalaman percakapan dinamis yang fokus pada kesehatan mental, memastikan keamanan konten melalui filter AI bawaan, dan memberikan antarmuka yang intuitif bagi pengguna.
